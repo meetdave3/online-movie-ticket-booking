@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+    <h1>Movie Booking</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Movie ID</th>
+                        <th>Movie</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+
+                        <td><input ng-model="movi.moviTitle" /></td>
+
+                        <td><button ng-click="addMovie(movi)" class="btn btn-primary">Add </button></td>
+
+                        <td><button ng-click="updateMovie(movi)" class="btn btn-primary">Update</button></td>
+
+                    </tr>
+                    <tr ng-repeat=" movi in moviList">
+                        <td>{{movi.moviTitle}}</td>
+                        <td><button ng-click="removeMovie(movi)" class="btn btn-danger">Remove</button></td>
+                        <td><button ng-click="editMovie(movi)" class="btn btn-primary">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
