@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 bodyParser = require('body-parser'); //parses information from POST
@@ -8,7 +7,7 @@ var mongoose = require('mongoose');
 var movieSchema = mongoose.Schema({
  
   moviTitle: String,
-  moviLanguage: String,
+  moviLanguage: String, 
   moviGenre: String,
   moviPoster: String,
   moviDirector: String,

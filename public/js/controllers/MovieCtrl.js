@@ -1,4 +1,4 @@
-angular.module('MoviesCtrl', []).controller('MoviesController', function($scope, $http) {
+sampleApp.controller('MoviesController', function($scope, $http,$log) {
 
     $scope.tagline = 'Book your movies here!';
 
@@ -35,6 +35,7 @@ angular.module('MoviesCtrl', []).controller('MoviesController', function($scope,
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
+                    
                     refresh();
                 });
 

@@ -5,6 +5,8 @@ var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var movies = require('./app/movie-crud');
+var city = require('./app/city-crud');
+var theatre = require('./app/theatre-crud');
 
 // configuration ===========================================
 	
@@ -12,12 +14,15 @@ var movies = require('./app/movie-crud');
 //var db = require('./config/db');
 app.use(bodyParser.json({})); // parse application/json 
 app.use('/movie', movies);
+app.use('/city',city)
+app.use('/theatre',theatre)
+
 
 
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var dbHost = 'mongodb://localhost:27017/test';
+var dbHost = 'mongodb://localhost:27017/ranjith';
 mongoose.connect(dbHost);
 
 var db = mongoose.connection;
