@@ -1,5 +1,4 @@
-sampleApp.controller('theatreController', function($scope, $http, $log)
-{
+sampleApp.controller('theatreController', function($scope, $http, $log){
 
     $scope.tagline = 'Manage Your Theatres here';
 
@@ -11,7 +10,7 @@ var loadCities = function() {
         });
     };
 
-loadCities()
+loadCities();
 
 var refresh = function() {
         $http.get('/theatre/getTheatre').success(function(response) {

@@ -12,7 +12,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/booking.html',
 			controller: 'BookingController'
 		})
-
 		.when('/movies', {
 			templateUrl: 'views/movies.html',
 			controller: 'MoviesController'
@@ -21,9 +20,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/city.html',
 			controller: 'cityController'
 		})
+		.when('/showtime', {
+			templateUrl: 'views/showtime.html',
+			controller: 'showtimeController'
+		})
         .when('/theatre', {
 			templateUrl: 'views/theatre.html',
-			controller: 'theatreController'	
+			controller: 'theatreController'
 		});
 
 

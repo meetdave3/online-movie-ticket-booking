@@ -1,0 +1,40 @@
+<div class="jumbotron text-center" ng-app="">
+    <h1>Assign Show Timings to Theatre</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Theatre Name</th>
+                        <th>Select Theatre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="string" placeholder="Timings"  ng-model="show.showTimings" /></td>
+
+                        <td><select ng-model="show.theatreName">
+                                                     <option ng-repeat="theatre in theatreList" ng-value ="theatre.theatreName">
+                                                         {{theatre.theatreName}}
+                                                     </option>
+
+                                                    </select></td>
+                        <td><button ng-click="addTimings(show)" class="btn btn-primary">Add </button>
+                        </td>
+
+                        <td><button ng-click="updateShowtime(show)" class="btn btn-primary">Update</button></td>
+
+                    </tr>
+                    <tr ng-repeat="showtime in showtimeList">
+                      <td>{{showtime.theatreTimings}}</td>
+                      <td>{{showtime.theatreName}}</td>
+                      <td><button ng-click="removeShowtime(show)" class="btn btn-danger">Remove</button></td>
+                      <td><button ng-click="editShowtime(show)" class="btn btn-primary">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>

@@ -7,22 +7,22 @@ var methodOverride = require('method-override');
 var movies = require('./app/movie-crud');
 var city = require('./app/city-crud');
 var theatre = require('./app/theatre-crud');
+var showtime = require('./app/showtime-crud');
 
 // configuration ===========================================
-	
+
 // config files
 //var db = require('./config/db');
-app.use(bodyParser.json({})); // parse application/json 
+app.use(bodyParser.json({})); // parse application/json
 app.use('/movie', movies);
-app.use('/city',city)
-app.use('/theatre',theatre)
-
-
+app.use('/city',city);
+app.use('/theatre',theatre);
+app.use('/showtime',showtime);
 
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var dbHost = 'mongodb://localhost:27017/ranjith';
+var dbHost = 'mongodb://localhost:27017/';
 mongoose.connect(dbHost);
 
 var db = mongoose.connection;
@@ -38,6 +38,6 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 require('./app/routes')(app); // pass our application into our routes
 
 // start app ===============================================
-app.listen(port);	
+app.listen(port);
 console.log('Magic happens on port ' + port); 			// shoutout to the user
 exports = module.exports = app; 						// expose app
