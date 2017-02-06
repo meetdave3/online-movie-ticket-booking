@@ -1,6 +1,6 @@
-# MEAN Stack Single Page Application Starter
+# MEAN Stack Movie Ticket Booking System
 
-This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
+This is a repo for a starter application for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application.
 
 ## Installation
 1. Download the repository
@@ -13,8 +13,13 @@ Use this starter kit to build any MEAN stack application you like.
 
 If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
 
-## Future Additions
-- CRUD examples
-- Development and Production Environments
-- Link examples
-- Single Page AngularJS Animations
+## Versions
+- v1.0: Basic CRUD Boiler Plate with OMDB API Integration. Add Movies Module
+- v1.1: City CRUD Module. Basic Add / Update / Read / Delete Cities
+- v1.2: Add / Remove Theatre. Assign Cities, Number of Seats and Ticket Price
+- v1.3: Add / Remove Show Times
+- v1.4: Assign Movies to show times and create shows
+- v1.5: Home Page - Search And filter Movies based on Genre / City and proceed to book tickets
+- v1.6: Book tickets based on City and generate Ticket ID and update available seats
+- v1.7: Ticket Cancellation module based on Ticket ID
+- v1.8: CSS Fix and Integration of Material Design
