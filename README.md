@@ -7,13 +7,11 @@ This is a repo for a starter application for a Single Page MEAN Stack applicatio
 2. Install npm modules: `npm install`
 3. Install bower dependencies `bower install`
 4. Start up the server: `node server.js`
-5. View in browser at http://localhost:8080
+5. View in browser at http://localhost:3000
 
 Use this starter kit to build any MEAN stack application you like.
 
-If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
-
-## Versions
+## Version Log
 - v1.0: Basic CRUD Boiler Plate with OMDB API Integration. Add Movies Module
 - v1.1: City CRUD Module. Basic Add / Update / Read / Delete Cities
 - v1.2: Add / Remove Theatre. Assign Cities, Number of Seats and Ticket Price
@@ -23,3 +21,4 @@ If you have any questions or requests, email us at [chris@scotch.io](mailto:chri
 - v1.6: Book tickets based on City and generate Ticket ID and update available seats
 - v1.7: Ticket Cancellation module based on Ticket ID
 - v1.8: CSS Fix and Integration of Material Design
+- Future Versions updating soon
