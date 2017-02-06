@@ -20,5 +20,6 @@ Use this starter kit to build any MEAN stack application you like.
 - v1.5: Home Page - Search And filter Movies based on Genre / City and proceed to book tickets
 - v1.6: Book tickets based on City and generate Ticket ID and update available seats
 - v1.7: Ticket Cancellation module based on Ticket ID
-- v1.8: CSS Fix and Integration of Material Design
+- v1.8: Security and session
+- v1.9: CSS Fix and Integration of Material Design
 - Future Versions updating soon

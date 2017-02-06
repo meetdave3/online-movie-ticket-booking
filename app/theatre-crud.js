@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 
 
 var theatreSchema = mongoose.Schema({            // i am creating creating schema for theatre
-
 	theatreName: String,
 	theatreSeats: Number,
 	ticketPrice: Number,
@@ -19,7 +18,6 @@ router.get('/getTheatre', function (req, res) {
     console.log("REACHED GET FUNCTION ON SERVER");
     Theatre.find({}, function (err, docs) {
          res.json(docs);
-         
     });
 });
 
@@ -27,16 +25,16 @@ router.get('/getTheatre/:id', function (req, res) {
     console.log("REACHED GET ID FUNCTION ON SERVER");
      Theatre.find({_id: req.params.id}, function (err, docs) {
          res.json(docs);
-         
+
     });
 });
 
 router.post('/addTheatre', function(req, res){
-console.log('till here no problem')
-	
+console.log('Till here no problem');
+
 var theatre = new Theatre({                // i am getting all the inputs into the Theatre model and i am passing the value to the theatre variable
   theatreName : req.body.TName,
-  theatreSeats: req.body.TSheet,
+  theatreSeats: req.body.TSeats,
   ticketPrice: req.body.TPrice,
   cityName: req.body.TCity
   });
@@ -69,10 +67,9 @@ router.put('/updateTheatre/:id', function(req, res){
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {
-  var err = new Error('Not Found'); 
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 module.exports = router;
-

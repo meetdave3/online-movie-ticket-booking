@@ -1,7 +1,7 @@
-sampleApp.controller('theatreController', function($scope, $http,$log) 
+sampleApp.controller('theatreController', function($scope, $http, $log)
 {
 
-    $scope.tagline = 'Fill the theatre Details Here';
+    $scope.tagline = 'Manage Your Theatres here';
 
 var loadCities = function() {
         $http.get('/city/getCity').success(function(response) {
@@ -17,49 +17,38 @@ var refresh = function() {
         $http.get('/theatre/getTheatre').success(function(response) {
             console.log('READ IS SUCCESSFUL');
             $scope.theatreList = response;
+            console.log($scope.theatreList);
             $scope.theatre = "";
         });
     };
 
-
-
-
 refresh();
 
-    $scope.addTheatre = function(theatre) 
+    $scope.addTheatre = function(theatre)
     {
 
         var  theatreObj ={
             TName:theatre.theatreName,                //creating one object to store all data in one
-            TSheet:theatre.theatreSheet,
+            TSeats:theatre.theatreSeating,
             TPrice:theatre.theatrePrice,
             TCity:theatre.city
         };
-       // var theatreName ={};
-       // var theatreSheet={};
-        //var ticketPrice={};
-        //var theatreCity={};
-        //theatreName["tname"] = theatre.theatreName;
-        //theatreSheet["tsheet"] = theatre.theatreSheet;
-       // ticketPrice["paisa"] = theatre.theatrePrice;
-        //theatreCity["tcity"] = theatre.city;
-         //theatreObj= [[theatreName],[theatreSheet],[ticketPrice],[theatreCity]]
-         //theatreObj['theatre'] = theatre.theatreName;
 
-    
+        //console.log(theatreObj);
+
+
             $http({
                     method: 'POST',
                     url: '/theatre/addTheatre',
-                     headers: {'Content-Type': 'application/json'},    
+                     headers: {'Content-Type': 'application/json'},
                     data: angular.fromJson(theatreObj)
                 })
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
-                    
                     refresh();
                 });
-  
+
 };
 
 
