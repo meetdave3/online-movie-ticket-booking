@@ -1,0 +1,50 @@
+<div class="jumbotron text-center">
+    <h1>Create Shows</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Select City</th>
+                        <th>Select Theatre</th>
+                        <th>Select Show Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><select ng-model="assign.city" ng-change="selectCity(assign)" >
+                             <option ng-repeat="city in cityList" ng-value ="city.cityName">
+                                 {{city.cityName}}
+                             </option>
+                            </select>
+                        </td>
+
+                        <td><select ng-model="assign.theatreName" ng-change="selectTheatre(assign)" >
+                             <option ng-repeat="theatre in returnValue" ng-value ="theatre.theatreName">
+                                 {{theatre.theatreName}}
+                             </option>
+                            </select>
+                        </td>
+
+                        <td>
+                          <td><button ng-click="addCity(city)" class="btn btn-primary">Add </button></td>
+                          <td><button ng-click="updateCity(city)" class="btn btn-primary">Update</button></td>
+                      </tr>
+
+                    <tr ng-repeat=" city in cityList">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button ng-click="removeCity(city)" class="btn btn-danger">Remove</button></td>
+                        <td><button ng-click="editCity(city)" class="btn btn-primary">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+
+
+</div>

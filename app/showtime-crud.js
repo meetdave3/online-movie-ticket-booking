@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var showtimeSchema = mongoose.Schema({
-  theatreTimings: String,
+  showTimings: String,
   theatreName: String
 });
 
@@ -30,7 +30,7 @@ router.post('/addTimings', function(req, res){
   console.log('Inside CRUD POST showtime');
 
   var showtime = new Showtime({
-    theatreTimings : req.body.STiming,
+    showTimings : req.body.STiming,
     theatreName : req.body.STheatre
   });
   console.log(showtime);

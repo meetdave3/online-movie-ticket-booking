@@ -25,10 +25,10 @@ sampleApp.controller('showtimeController', function($scope, $http, $log){
 
   refresh();
 
-  $scope.addTimings = function(show){
+  $scope.addTimings = function(showtime){
     var showObj = {
-      STiming: show.showTimings,
-      STheatre: show.theatreName
+      STiming: showtime.showTimings,
+      STheatre: showtime.theatreName
     };
 
     console.log(showObj);
@@ -46,7 +46,7 @@ sampleApp.controller('showtimeController', function($scope, $http, $log){
     })
   };
 
-  $scope.removeShowtime = function(show) {
+  $scope.removeShowtime = function(showtime) {
     console.log(showtime.id);
     $http.delete('/showtime/deleteShowtime/' + showtime._id).success(function(response){
       console.log(response);
@@ -55,13 +55,13 @@ sampleApp.controller('showtimeController', function($scope, $http, $log){
     });
   };
 
-  $scope.editShowtime = function(show) {
-    $http.get('/showtime/getTimings' + showtime._id).success(function(response){
+  $scope.editShowtime = function(showtime) {
+    $http.get('/showtime/getTimings/' + showtime._id).success(function(response){
       $scope.showtime = response[0];
     });
   };
 
-  $scope.updateShowtime = function(theatre) {
+  $scope.updateShowtime = function(showtime) {
     console.log("REACHED SHOWTIME UPDATE");
     console.log($scope.showtime._id);
     $http.put('/showtime/updateShowtime/' + $scope.showtime._id, $scope.showtime).success(function(response){

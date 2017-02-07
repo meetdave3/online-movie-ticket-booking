@@ -14,25 +14,25 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="string" placeholder="Timings"  ng-model="show.showTimings" /></td>
+                        <td><input type="string" placeholder="Timings"  ng-model="showtime.showTimings" /></td>
 
-                        <td><select ng-model="show.theatreName">
-                                                     <option ng-repeat="theatre in theatreList" ng-value ="theatre.theatreName">
-                                                         {{theatre.theatreName}}
-                                                     </option>
-
-                                                    </select></td>
-                        <td><button ng-click="addTimings(show)" class="btn btn-primary">Add </button>
+                        <td><select ng-model="showtime.theatreName">
+                               <option ng-repeat="theatre in theatreList" ng-value ="theatre.theatreName">
+                                   {{theatre.theatreName}}
+                               </option>
+                            </select>
+                        </td>
+                        <td><button ng-click="addTimings(showtime)" class="btn btn-primary">Add </button>
                         </td>
 
-                        <td><button ng-click="updateShowtime(show)" class="btn btn-primary">Update</button></td>
+                        <td><button ng-click="updateShowtime(showtime)" class="btn btn-primary">Update</button></td>
 
                     </tr>
                     <tr ng-repeat="showtime in showtimeList">
-                      <td>{{showtime.theatreTimings}}</td>
+                      <td>{{showtime.showTimings}}</td>
                       <td>{{showtime.theatreName}}</td>
-                      <td><button ng-click="removeShowtime(show)" class="btn btn-danger">Remove</button></td>
-                      <td><button ng-click="editShowtime(show)" class="btn btn-primary">Edit</button></td>
+                      <td><button ng-click="removeShowtime(showtime)" class="btn btn-danger">Remove</button></td>
+                      <td><button ng-click="editShowtime(showtime)" class="btn btn-primary">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

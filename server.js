@@ -4,20 +4,25 @@ var app            = express();
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+
+
 var movies = require('./app/movie-crud');
 var city = require('./app/city-crud');
 var theatre = require('./app/theatre-crud');
 var showtime = require('./app/showtime-crud');
+//var assign = require('./app/assign-crud');
 
 // configuration ===========================================
 
 // config files
 //var db = require('./config/db');
 app.use(bodyParser.json({})); // parse application/json
+
 app.use('/movie', movies);
 app.use('/city',city);
 app.use('/theatre',theatre);
 app.use('/showtime',showtime);
+//app.use('/assign',assign);
 
 
 var mongo = require('mongodb');
