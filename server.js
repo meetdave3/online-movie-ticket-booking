@@ -10,7 +10,7 @@ var movies = require('./app/movie-crud');
 var city = require('./app/city-crud');
 var theatre = require('./app/theatre-crud');
 var showtime = require('./app/showtime-crud');
-//var assign = require('./app/assign-crud');
+var assign = require('./app/assign-crud');
 
 // configuration ===========================================
 
@@ -22,7 +22,7 @@ app.use('/movie', movies);
 app.use('/city',city);
 app.use('/theatre',theatre);
 app.use('/showtime',showtime);
-//app.use('/assign',assign);
+app.use('/assign',assign);
 
 
 var mongo = require('mongodb');

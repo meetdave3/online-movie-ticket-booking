@@ -11,11 +11,13 @@
                         <th>Select City</th>
                         <th>Select Theatre</th>
                         <th>Select Show Time</th>
+                        <th>Select Movie</th>
+                        <th>Operations</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><select ng-model="assign.city" ng-change="selectCity(assign)" >
+                        <td><select ng-model="assign.cityName" ng-change="selectCity(assign)" >
                              <option ng-repeat="city in cityList" ng-value ="city.cityName">
                                  {{city.cityName}}
                              </option>
@@ -23,23 +25,38 @@
                         </td>
 
                         <td><select ng-model="assign.theatreName" ng-change="selectTheatre(assign)" >
-                             <option ng-repeat="theatre in returnValue" ng-value ="theatre.theatreName">
-                                 {{theatre.theatreName}}
+                             <option ng-repeat="theatreList in returnValue1" ng-value ="theatreList.theatreName">
+                                 {{theatreList.theatreName}}
                              </option>
                             </select>
                         </td>
 
-                        <td>
-                          <td><button ng-click="addCity(city)" class="btn btn-primary">Add </button></td>
-                          <td><button ng-click="updateCity(city)" class="btn btn-primary">Update</button></td>
+                        <td><select ng-model="assign.showTime" ng-change="selectshowTime(assign)" >
+                             <option ng-repeat="showtimeList in returnTimings" ng-value ="showtimeList.showTimings">
+                                 {{showtimeList.showTimings}}
+                             </option>
+                            </select>
+                        </td>
+
+                        <td><select ng-model="assign.movieTitle">
+                             <option ng-repeat="movieList in moviList" ng-value ="movieList.moviTitle">
+                                 {{movieList.moviTitle}}
+                             </option>
+                            </select>
+                        </td>
+
+                          <td><button ng-click="addAssign(assign)" class="btn btn-primary">Add </button></td>
+                          <td><button ng-click="updateAssign(assign)" class="btn btn-primary">Update</button></td>
                       </tr>
 
-                    <tr ng-repeat=" city in cityList">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button ng-click="removeCity(city)" class="btn btn-danger">Remove</button></td>
-                        <td><button ng-click="editCity(city)" class="btn btn-primary">Edit</button></td>
+                    <tr ng-repeat="assign in assignList">
+
+                        <td>{{assign.cityName}}</td>
+                        <td>{{assign.theatreName}}</td>
+                        <td>{{assign.showTime}}</td>
+                        <td>{{assign.movieTitle}}</td>
+                        <td><button ng-click="removeAssign(assign)" class="btn btn-danger">Remove</button></td>
+                        <td><button ng-click="editAssign(assign)" class="btn btn-primary">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

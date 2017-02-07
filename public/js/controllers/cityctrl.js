@@ -1,9 +1,9 @@
-sampleApp.controller('cityController', function($scope, $http,$log) 
+sampleApp.controller('cityController', function($scope, $http,$log)
 {
 
     $scope.tagline = 'Add your city here';
 
-  
+
 
     var refresh = function() {
         $http.get('/city/getCity').success(function(response) {
@@ -15,7 +15,7 @@ sampleApp.controller('cityController', function($scope, $http,$log)
 
     refresh();
 
-    $scope.addCity = function(city) 
+    $scope.addCity = function(city)
     {
 
         var cityObj = {};
@@ -24,13 +24,13 @@ sampleApp.controller('cityController', function($scope, $http,$log)
             $http({
                     method: 'POST',
                     url: '/city/addCity',
-                     headers: {'Content-Type': 'application/json'},    
+                     headers: {'Content-Type': 'application/json'},
                     data: cityObj
                 })
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
-                    
+
                     refresh();
                 });
 
@@ -43,7 +43,7 @@ sampleApp.controller('cityController', function($scope, $http,$log)
             // });
 
         };
-        
+
 
     $scope.removeCity = function(city) {
         //console.log(id);
