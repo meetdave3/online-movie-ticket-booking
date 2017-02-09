@@ -8,7 +8,9 @@ var assignSchema = mongoose.Schema({
     cityName: String,
     theatreName: String,
     showTime: String,
-    movieTitle: String
+    movieTitle: String,
+    fromDate: String,
+    toDate: String
  });
 var Assign = mongoose.model('Assign', assignSchema, 'assigning');
 
@@ -35,7 +37,9 @@ router.post('/addAssign', function(req, res){
      cityName: req.body.CName,
      theatreName: req.body.TName,
      showTime: req.body.STime,
-     movieTitle: req.body.MTitle
+     movieTitle: req.body.MTitle,
+     fromDate: req.body.FDate,
+     toDate: req.body.TDate
   });
 console.log(assigning);
   assigning.save(function(err, docs){

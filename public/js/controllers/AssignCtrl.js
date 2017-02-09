@@ -67,12 +67,30 @@ sampleApp.controller('AssignController', function($scope, $http, $log){
 		});
 	}
 
-	$scope.addAssign = function(assign) {
+
+	$scope.addAssign = function(assign, model) {
+
+		console.log($scope.assign.fromDate);
+		console.log(assign.toDate);
+
+		var fromDate1 = moment($scope.assign.fromDate).format('l');
+  	var toDate1 = moment($scope.assign.toDate).format('l');
+
+		console.log(fromDate1);
+
+		$scope.fromDate1 = fromDate1;
+		$scope.toDate1 = toDate1;
+
+		console.log(fromDate1);
+
+
 		var assignObj = {
 			CName: assign.cityName,
 			TName: assign.theatreName,
 			STime: assign.showTime,
-			MTitle: assign.movieTitle
+			MTitle: assign.movieTitle,
+			FDate: fromDate1,
+			TDate: toDate1
 		}
 		console.log(assignObj);
 
