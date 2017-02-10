@@ -10,6 +10,9 @@
                     <tr>
                         <th>City List</th>
                         <th>Operations</th>
+                        <th>
+                          
+                        </th>
 
                     </tr>
                 </thead>
@@ -19,9 +22,9 @@
 
                         <td><input ng-model="city.cityName" /></td>
 
-                        <td><button ng-click="addCity(city)" class="btn btn-primary">Add </button></td>
+                        <td><button ng-click="addCity(city)" class="btn btn-dark-green waves-effect">Add </button></td>
 
-                        <td><button ng-click="updateCity(city)" class="btn btn-primary">Update</button></td>
+                        <td><button ng-click="updateCity(city)" class="btn btn-mdb waves-effect">Update</button></td>
 
                     </tr>
                     <tr ng-repeat=" city in cityList">

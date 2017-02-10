@@ -10,29 +10,35 @@
                     <tr>
                         <th>Theatre Name</th>
                         <th>Select Theatre</th>
+                        <th>
+                          Operations
+                        </th>
+                        <th>
+
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><input type="string" placeholder="Timings"  ng-model="showtime.showTimings" /></td>
 
-                        <td><select ng-model="showtime.theatreName">
+                        <td><select class="form-control" ng-model="showtime.theatreName">
                                <option ng-repeat="theatre in theatreList" ng-value ="theatre.theatreName">
                                    {{theatre.theatreName}}
                                </option>
                             </select>
                         </td>
-                        <td><button ng-click="addTimings(showtime)" class="btn btn-primary">Add </button>
+                        <td><button ng-click="addTimings(showtime)" class="btn btn-dark-green waves-effect">Add </button>
                         </td>
 
-                        <td><button ng-click="updateShowtime(showtime)" class="btn btn-primary">Update</button></td>
+                        <td><button ng-click="updateShowtime(showtime)" class="btn btn-mdb waves-effect">Update</button></td>
 
                     </tr>
                     <tr ng-repeat="showtime in showtimeList">
                       <td>{{showtime.showTimings}}</td>
                       <td>{{showtime.theatreName}}</td>
-                      <td><button ng-click="removeShowtime(showtime)" class="btn btn-danger">Remove</button></td>
-                      <td><button ng-click="editShowtime(showtime)" class="btn btn-primary">Edit</button></td>
+                      <td><button ng-click="removeShowtime(showtime)" class="btn btn-danger waves-effect">Remove</button></td>
+                      <td><button ng-click="editShowtime(showtime)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

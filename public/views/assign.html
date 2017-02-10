@@ -3,52 +3,53 @@
 
     <p>{{ tagline }}</p>
 
-    <div>
+    <div class="nostyle">
         <center>
 
-          <tbody>
-              <tr>
-                  <td><select ng-model="assign.cityName" ng-change="selectCity(assign)" >
-                       <option ng-repeat="city in cityList" ng-value ="city.cityName">
-                           {{city.cityName}}
-                       </option>
-                      </select>
-                  </td>
+                  <label>Select City</label>
+                  <select class="form-control" ng-model="assign.cityName" ng-change="selectCity(assign)" >
+                   <option ng-repeat="city in cityList" ng-value="city.cityName" value="ng-value" >
+                       {{city.cityName}}
+                   </option>
+                  </select>
 
-                  <td><select ng-model="assign.theatreName" ng-change="selectTheatre(assign)" >
+
+
+                  <label>Select Theatre</label>
+                  <select class="form-control" ng-model="assign.theatreName" ng-change="selectTheatre(assign)" >
                        <option ng-repeat="theatreList in returnValue1" ng-value ="theatreList.theatreName">
                            {{theatreList.theatreName}}
                        </option>
-                      </select>
-                  </td>
+                  </select>
 
-                  <td><select ng-model="assign.showTime" ng-change="selectshowTime(assign)" >
+                  <label>Select Show Time</label>
+                  <select class="form-control" ng-model="assign.showTime" ng-change="selectshowTime(assign)" >
                        <option ng-repeat="showtimeList in returnTimings" ng-value ="showtimeList.showTimings">
                            {{showtimeList.showTimings}}
                        </option>
-                      </select>
-                  </td>
+                  </select>
 
-                  <td><select ng-model="assign.movieTitle">
+                  <label>Select Movie</label>
+                  <select class="form-control" ng-model="assign.movieTitle">
                        <option ng-repeat="movieList in moviList" ng-value ="movieList.moviTitle">
                            {{movieList.moviTitle}}
                        </option>
-                      </select>
-                  </td>
+                  </select>
 
-                  <td>
-                      <input type="date" ng-model="assign.fromDate" placeholder="yyyy-MM-dd" required />
-                  </td>
-                  <td>
-                      <input type="date" ng-model="assign.toDate" placeholder="yyyy-MM-dd" required />
-                  </td>
-                    <hr />
-                    <button ng-click="addAssign(assign)" class="btn btn-primary">Add </button>
-                    <button ng-click="updateAssign(assign)" class="btn btn-primary">Update</button>
+                  <label>Release Date</label>
+                  <input type="date" ng-model="assign.fromDate" placeholder="yyyy-MM-dd" required />
 
+                  <label>End Date</label>
+                  <input type="date" ng-model="assign.toDate" placeholder="yyyy-MM-dd" required />
 
+                  <br />
 
-            <table class="table">
+                    <button type="button" ng-click="addAssign(assign)" class="btn btn-outline-success waves-effect">Add</button>
+                    <button ng-click="updateAssign(assign)" class="btn btn-outline-primary waves-effect">Update</button>
+
+              <hr />
+
+            <table class="table table-inverse">
                 <thead>
                     <tr>
                         <th>City</th>
@@ -58,6 +59,7 @@
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Operations</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,13 +72,11 @@
                         <td>{{assign.movieTitle}}</td>
                         <td>{{assign.fromDate}}</td>
                         <td>{{assign.toDate}}</td>
-                        <td><button ng-click="removeAssign(assign)" class="btn btn-danger">Remove</button></td>
-                        <td><button ng-click="editAssign(assign)" class="btn btn-primary">Edit</button></td>
+                        <td><button ng-click="removeAssign(assign)" class="btn btn-danger waves-effect">Remove</button></td>
+                        <td><button ng-click="editAssign(assign)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>
         </center>
     </div>
-
-
 </div>

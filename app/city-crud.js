@@ -5,7 +5,7 @@ bodyParser = require('body-parser'); //parses information from POST
 var mongoose = require('mongoose');
 
 var citySchema = mongoose.Schema({
- 
+
 cityName: String
  });
 var City = mongoose.model('City', citySchema, 'citi');
@@ -15,7 +15,7 @@ router.get('/getCity', function (req, res) {
     console.log("REACHED GET FUNCTION ON SERVER");
     City.find({}, function (err, docs) {
          res.json(docs);
-         
+
     });
 });
 
@@ -23,16 +23,16 @@ router.get('/getCity/:id', function (req, res) {
     console.log("REACHED GET ID FUNCTION ON SERVER");
      City.find({_id: req.params.id}, function (err, docs) {
          res.json(docs);
-         
+
     });
 });
 
 router.post('/addCity', function(req, res){
- 
+
  //console.log(req.body);
   //console.log(req.body.citi);
 
-  
+
  console.log("HFTRGHIGFnh");
  var citi = new City({
      cityName : req.body.cities
@@ -66,12 +66,9 @@ router.put('/updateCity/:id', function(req, res){
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {
-  var err = new Error('Not Found'); 
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 module.exports = router;
-
-
-

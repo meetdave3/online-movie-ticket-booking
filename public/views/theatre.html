@@ -11,6 +11,15 @@
                         <th>Theatre Name</th>
                         <th>No of Seats</th>
                         <th>Ticket Price</th>
+                        <th>
+                          Operations
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+                          
+                        </th>
 
                     </tr>
                 </thead>
@@ -21,16 +30,16 @@
                         <td><input placeholder="Theatre Name"  ng-model="theatre.theatreName" /></td>
                         <td><input type="number" placeholder="Number of Seats"  ng-model="theatre.theatreSeating" /></td>
                         <td><input type="number" placeholder="Ticket Price"  ng-model="theatre.theatrePrice" /></td>
-                        <td><select ng-model="theatre.city">
+                        <td><select class="form-control" ng-model="theatre.city">
                                                      <option ng-repeat="city in cityList" ng-value ="city.cityName">
                                                          {{city.cityName}}
                                                      </option>
 
                                                     </select></td>
-                        <td><button ng-click="addTheatre(theatre)" class="btn btn-primary">Add </button>
+                        <td><button ng-click="addTheatre(theatre)" class="btn btn-dark-green waves-effect">Add </button>
                         </td>
 
-                        <td><button ng-click="updateTheatre(theatre)" class="btn btn-primary">Update</button></td>
+                        <td><button ng-click="updateTheatre(theatre)" class="btn btn-mdb waves-effect">Update</button></td>
 
                     </tr>
                     <tr ng-repeat="theatre in theatreList">
@@ -39,8 +48,8 @@
                       <td>{{theatre.ticketPrice}}</td>
                       <td>{{theatre.cityName}}</td>
 
-                      <td><button ng-click="removeTheatre(theatre)" class="btn btn-danger">Remove</button></td>
-                      <td><button ng-click="editTheatre(theatre)" class="btn btn-primary">Edit</button></td>
+                      <td><button ng-click="removeTheatre(theatre)" class="btn btn-danger waves-effect">Remove</button></td>
+                      <td><button ng-click="editTheatre(theatre)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>
