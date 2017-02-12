@@ -2,6 +2,15 @@ sampleApp.controller('AssignController', function($scope, $http, $log){
 
 	$scope.tagline = 'Now ya can create shows by assigning movies to show times, Its SHOW TIME!';
 
+	var getMovies = function(){
+		$http.get('/movie/getMovie').success(function(response) {
+				console.log('READ IS SUCCESSFUL');
+				$scope.moviList = response;
+				$scope.movi = "";
+				console.log($scope.moviList);
+		});
+	}
+
 	var refresh1 = function() {
 			$http.get('/city/getCity').success(function(response) {
 					console.log('READ IS SUCCESSFUL');
@@ -67,8 +76,65 @@ sampleApp.controller('AssignController', function($scope, $http, $log){
 		});
 	}
 
+	var getTheatreDetails = function() {
+	        $http.get('/theatre/getTheatre').success(function(response) {
+	            console.log('READ IS SUCCESSFUL');
+	            $scope.theatreList = response;
+	            $scope.theatre = "";
+							theatreList = $scope.theatreList;
+	        });
+	    };
 
-	$scope.addAssign = function(assign, model) {
+	getTheatreDetails();
+
+	var moviList = function(){
+		$http.get('/movie/getMovie').success(function(response) {
+				console.log('READ IS SUCCESSFUL');
+				$scope.moviList = response;
+				$scope.movi = "";
+				//console.log($scope.moviList);
+				moviList = $scope.moviList;
+		});
+	}
+
+	moviList();
+
+
+	$scope.addAssign = function(assign) {
+
+		var userData = $scope.assign.movieTitle;
+		var userTheatre = $scope.assign.theatreName;
+		console.log(userData);
+		console.log(userTheatre);
+
+		theatreList1 = $scope.theatreList;
+		$scope.theatreList1 = theatreList1;
+
+		moviList1 = $scope.moviList;
+		$scope.movieList1 = moviList1;
+
+		console.log(moviList1);
+		console.log(theatreList1);
+
+		$scope.theatreList1 = theatreList1.filter(function(o){
+			return (o.theatreName == userTheatre)
+		});
+
+		$scope.moviList1 = moviList1.filter(function(o){
+			return (o.moviTitle === userData)
+		});
+
+		console.log($scope.moviList1);
+		console.log($scope.theatreList1);
+
+		moviActors = $scope.moviList1[0].moviActors;
+		moviDirector = $scope.moviList1[0].moviDirector;
+		moviGenre = $scope.moviList1[0].moviGenre;
+		moviLanguage = $scope.moviList1[0].moviLanguage;
+		moviPoster = $scope.moviList1[0].moviPoster;
+
+		theatreSeats = $scope.theatreList1[0].theatreSeats;
+		ticketPrice = $scope.theatreList1[0].ticketPrice;
 
 		console.log($scope.assign.fromDate);
 		console.log(assign.toDate);
@@ -90,7 +156,14 @@ sampleApp.controller('AssignController', function($scope, $http, $log){
 			STime: assign.showTime,
 			MTitle: assign.movieTitle,
 			FDate: fromDate1,
-			TDate: toDate1
+			TDate: toDate1,
+			MActors: moviActors,
+			MDirector: moviDirector,
+			MGenre: moviGenre,
+			MLanguage: moviLanguage,
+			MPoster: moviPoster,
+			TSeats: theatreSeats,
+			TPrice: ticketPrice
 		}
 		console.log(assignObj);
 

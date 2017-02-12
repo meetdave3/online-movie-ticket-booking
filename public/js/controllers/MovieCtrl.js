@@ -9,6 +9,7 @@ sampleApp.controller('MoviesController', function($scope, $http,$log) {
             console.log('READ IS SUCCESSFUL');
             $scope.moviList = response;
             $scope.movi = "";
+            console.log($scope.moviList);
         });
     };
 
@@ -21,7 +22,6 @@ sampleApp.controller('MoviesController', function($scope, $http,$log) {
             for (var key in response) {
                 if (key == 'Title' || key == 'Language' || key == 'Poster' || key == 'Genre' || key == 'Director' || key == 'Actors') {
                     movieObj[key] = response[key];
-
                 }
             }
            // $http.defaults.headers.post["Content-Type"] = "application/json";
@@ -29,13 +29,13 @@ sampleApp.controller('MoviesController', function($scope, $http,$log) {
             $http({
                     method: 'POST',
                     url: '/movie/addMovie',
-                     headers: {'Content-Type': 'application/json'},    
+                     headers: {'Content-Type': 'application/json'},
                     data: movieObj
                 })
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
-                    
+
                     refresh();
                 });
 

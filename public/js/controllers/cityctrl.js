@@ -17,32 +17,21 @@ sampleApp.controller('cityController', function($scope, $http,$log)
 
     $scope.addCity = function(city)
     {
+      var cityObj = {};
+      cityObj["cities"] = city.cityName
+      $http({
+              method: 'POST',
+              url: '/city/addCity',
+               headers: {'Content-Type': 'application/json'},
+              data: cityObj
+          })
+          .then(function(response) {
+              console.log(response);
+              console.log("CREATE IS SUCCESSFUL");
 
-        var cityObj = {};
-        cityObj["cities"] = city.cityName
-
-            $http({
-                    method: 'POST',
-                    url: '/city/addCity',
-                     headers: {'Content-Type': 'application/json'},
-                    data: cityObj
-                })
-                .then(function(response) {
-                    console.log(response);
-                    console.log("CREATE IS SUCCESSFUL");
-
-                    refresh();
-                });
-
-
-            // var serviceName = 'movi'
-            // $http.post('/movie/addMovie', movieObj).success(function(response) {
-            //     console.log(response);
-            //     console.log("CREATE IS SUCCESSFUL");
-            //     refresh();
-            // });
-
-        };
+              refresh();
+          });
+      };
 
 
     $scope.removeCity = function(city) {

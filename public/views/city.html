@@ -1,4 +1,4 @@
-<div class="jumbotron text-center" ng-app="">
+<div class="container jumbotron text-center" ng-app="">
     <h1>City</h1>
 
     <p>{{ tagline }}</p>
@@ -11,7 +11,7 @@
                         <th>City List</th>
                         <th>Operations</th>
                         <th>
-                          
+
                         </th>
 
                     </tr>
@@ -30,8 +30,8 @@
                     <tr ng-repeat=" city in cityList">
                         <td>{{city.cityName}}</td>
 
-                        <td><button ng-click="removeCity(city)" class="btn btn-danger">Remove</button></td>
-                        <td><button ng-click="editCity(city)" class="btn btn-primary">Edit</button></td>
+                        <td><button ng-click="removeCity(city)" class="btn btn-danger waves-effect">Remove</button></td>
+                        <td><button ng-click="editCity(city)" class="btn btn-primary waves-effect">Edit</button></td>
                     </tr>
                 </tbody>
             </table>

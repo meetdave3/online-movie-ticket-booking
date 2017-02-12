@@ -54,35 +54,32 @@
     <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 
 
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <div class="card-block text-center">
-            <div class="card">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
+    <div class="container card" style="background-color: #00BBD3">
 
         <div style="padding: 1%;">
-        <!-- HEADER -->
-        <span style="padding-right: 1cm;"><a href="/"><i class="fa fa-home" style="padding-right: 0.2cm;"></i>Home</a></span>
+          <center>
+            <!-- HEADER -->
+
+        <span style="padding-right: 1cm; color:white;">BOOK MY SHOW</span>
+        <span style="padding-right: 1cm;"><a href="/" btn-flat waves-effect><i class="fa fa-home" style="padding-right: 0.2cm;"></i>Home</a></span>
         <span style="padding-right: 1cm;"><a href="/booking"><i class="fa fa-ticket" style="padding-right: 0.2cm;"></i>Booking</a></span>
         <span style="padding-right: 1cm;"><a href="/city"><i class="fa fa-map-marker" style="padding-right: 0.2cm;"></i>City</a></span>
         <span style="padding-right: 1cm;"><a href="/movies"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Movies</a></span>
         <span style="padding-right: 1cm;"><a href="/theatre"><i class="fa fa-film" style="padding-right: 0.2cm;"></i>Theatre</a></span>
         <span style="padding-right: 1cm;"><a href="/showtime"><i class="fa fa-clock-o" style="padding-right: 0.2cm;"></i>Showtime</a></span>
         <span style="padding-right: 1cm;"><a href="/assign"><i class="fa fa-pencil" style="padding-right: 0.2cm;"></i>Assign</a></span>
+      </center>
     </div>
+  </div>
     <br>
 
-        <!-- ANGULAR DYNAMIC CONTENT -->
-        <div ng-view></div>
+  <!-- ANGULAR DYNAMIC CONTENT -->
+  <div ng-view></div>
 
-    </div>
+  <div class="footer footerpad" style="background-color: #00BBD3; color: white;">
+    <center><p>Powered by MEAN STACK</p></center>
+  </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.js"></script>
 

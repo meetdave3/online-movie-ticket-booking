@@ -10,7 +10,14 @@ var assignSchema = mongoose.Schema({
     showTime: String,
     movieTitle: String,
     fromDate: String,
-    toDate: String
+    toDate: String,
+    moviLanguage: String,
+    moviGenre: String,
+    moviPoster: String,
+    moviDirector: String,
+    moviActors: String,
+    theatreSeats: String,
+    ticketPrice: String
  });
 var Assign = mongoose.model('Assign', assignSchema, 'assigning');
 
@@ -39,7 +46,14 @@ router.post('/addAssign', function(req, res){
      showTime: req.body.STime,
      movieTitle: req.body.MTitle,
      fromDate: req.body.FDate,
-     toDate: req.body.TDate
+     toDate: req.body.TDate,
+     moviLanguage: req.body.MLanguage,
+     moviGenre: req.body.MGenre,
+     moviPoster: req.body.MPoster,
+     moviDirector: req.body.MDirector,
+     moviActors: req.body.MActors,
+     ticketPrice: req.body.TPrice,
+     theatreSeats: req.body.TSeats
   });
 console.log(assigning);
   assigning.save(function(err, docs){
