@@ -6,7 +6,9 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 			$http.get('/assign/getAssign').success(function(response) {
 					console.log('READ IS SUCCESSFUL');
 					$scope.movieList = true;
+					$scope.carousel = true;
 					$scope.bookingWindow = false;
+					$scope.headerBox = true;
 					$scope.assignList = response;
 					$scope.assign = "";
 					console.log($scope.assignList);
@@ -17,16 +19,80 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 
 	$scope.goBack = function() {
 		$scope.movieList = true;
+		$scope.headerBox = true;
+		$scope.carousel = true;
 		$scope.bookingWindow = false;
+		$scope.booking.userSeats = null;
+		$scope.totalAmount = null;
 		refresh();
 	}
 
 	$scope.bookTickets = function(assign){
 		var id = assign._id;
-		$scope.id = id;
-		$scope.movieList = false;
-		$scope.bookingWindow = true;
 		console.log(id);
+		$http.get('/assign/getAssign').success(function(response) {
+				console.log('READ IS SUCCESSFUL');
+				$scope.assignList = response;
+		});
+
+		console.log($scope.assignList);
+		assignList1 = $scope.assignList;
+
+		$scope.assignList1 = assignList1.filter(function(o){
+			return (o._id === id)
+		});
+
+		console.log($scope.assignList1);
+
+		$scope.assign.userSeats;
+
+		$scope.id = id;
+		$scope.carousel = false;
+		$scope.movieList = false;
+		$scope.headerBox = false;
+		$scope.bookingWindow = true;
+	}
+
+	$scope.calculateTotal = function(booking){
+		console.log($scope.booking.userSeats);
+
+		var ticketPrice = $scope.assignList1[0].ticketPrice;
+		var totalAmount = ticketPrice * $scope.booking.userSeats;
+
+		$scope.totalAmount = totalAmount;
+		console.log(totalAmount);
+	}
+
+	$scope.bookNow = function(booking) {
+		console.log($scope.assignList1);
+		var oldRemSeats = $scope.assignList1[0].remSeats;
+		var remSeats = oldRemSeats - $scope.booking.userSeats;
+		$scope.remSeats = remSeats;
+
+		var bookingObj = {
+			TSeats: remSeats
+		}
+
+		console.log($scope.id);
+
+		$http({
+      method: 'UPDATE',
+      url: 'assign/updateAssign/' + $scope.id,
+      headers: {'Content-Type': 'application/json'},
+      data: angular.fromJson(bookingObj)
+    })
+    .then(function(response){
+      console.log(response);
+      console.log("REM SEATS UPDATED");
+      refresh();
+    })
+		
+		alert(bookingObj);
+		//var orderId = Math.floor(Math.random()*90000) + 10000;
+		//$scope.orderId = orderId;
+
+
+
 	}
 
 });

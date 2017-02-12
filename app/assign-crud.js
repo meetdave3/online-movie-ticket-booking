@@ -17,13 +17,14 @@ var assignSchema = mongoose.Schema({
     moviDirector: String,
     moviActors: String,
     theatreSeats: String,
-    ticketPrice: String
+    ticketPrice: String,
+    remSeats: String
  });
 var Assign = mongoose.model('Assign', assignSchema, 'assigning');
 
 
 router.get('/getAssign', function (req, res) {
-    console.log("REACHED GET FUNCTION ON SERVER");
+    console.log("REACHED SINGLE GET FUNCTION ON SERVER");
     Assign.find({}, function (err, docs) {
          res.json(docs);
 
@@ -53,9 +54,10 @@ router.post('/addAssign', function(req, res){
      moviDirector: req.body.MDirector,
      moviActors: req.body.MActors,
      ticketPrice: req.body.TPrice,
-     theatreSeats: req.body.TSeats
+     theatreSeats: req.body.TSeats,
+     remSeats: req.body.TSeats
   });
-console.log(assigning);
+  console.log(assigning);
   assigning.save(function(err, docs){
     if ( err ) throw err;
     console.log("Show Assigned Successfully");
