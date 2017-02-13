@@ -27,7 +27,7 @@ app.use('/assign',assign);
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var dbHost = 'mongodb://localhost:27017/';
+var dbHost = 'mongodb://localhost:27017/meet';
 mongoose.connect(dbHost);
 
 var db = mongoose.connection;
