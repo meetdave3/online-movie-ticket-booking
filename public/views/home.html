@@ -115,12 +115,29 @@
 				<p>{{assignList1[0].showTime}}, {{assignList1[0].theatreName}}, {{assignList1[0].cityName}}</p>
 				<hr>
 				<p ng-model="assign.ticketPrice">Ticket Price: {{assignList1[0].ticketPrice}}</p>
-				<input type="number" placeholder="Number of Seats"  ng-model="booking.userSeats" ng-change="calculateTotal(booking)" />
+				<input type="number" placeholder="Number of Seats"  ng-model="booking.userSeats" ng-change="calculateTotal(booking)" autofocus>
 				<br><br>
 				<button type="button" class="btn btn-success" ng-click="bookNow(booking)">Pay ₹{{totalAmount}} and proceed</button>
 				<button type="button" class="btn btn-primary" ng-click="goBack()">Go Back</button>
 			</div>
 		</div>
 	</div>
+</div>
 
+<div class="container jumbotron text-center wow fadeInUp" ng-show="orderSuccess" data-wow-delay="0.3s">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card-block">
+				<center><h2>BOOKED {{booking.userSeats}} TICKETS SUCCESSFULLY</h2>
+					<hr>
+					<i style="font-size: 150px;" class="fa fa-check-circle wow fadeInUp" data-wow-delay="0.8s" aria-hidden="true"></i>
+					<hr>
+					<h5><strong>Order ID: {{orderId}}</strong></h5>
+					<h5>Movie Name: {{assignList1[0].movieTitle}}</h5>
+					<h5>Venue: {{assignList1[0].theatreName}}, {{assignList1[0].cityName}}</h5>
+					<h2>ENJOY YOUR MOVIE!</h2>
+				</center>
+			</div>
+		</div>
+	</div>
 </div>

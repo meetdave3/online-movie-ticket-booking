@@ -9,6 +9,7 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 					$scope.carousel = true;
 					$scope.bookingWindow = false;
 					$scope.headerBox = true;
+					$scope.orderSuccess = false;
 					$scope.assignList = response;
 					$scope.assign = "";
 					console.log($scope.assignList);
@@ -21,6 +22,7 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 		$scope.movieList = true;
 		$scope.headerBox = true;
 		$scope.carousel = true;
+		$scope.orderSuccess = false;
 		$scope.bookingWindow = false;
 		$scope.booking.userSeats = null;
 		$scope.totalAmount = null;
@@ -50,6 +52,7 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 		$scope.carousel = false;
 		$scope.movieList = false;
 		$scope.headerBox = false;
+		$scope.orderSuccess = false;
 		$scope.bookingWindow = true;
 	}
 
@@ -66,17 +69,17 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 	$scope.bookNow = function(booking) {
 		console.log($scope.assignList1);
 		var oldRemSeats = $scope.assignList1[0].remSeats;
-		var remSeats = oldRemSeats - $scope.booking.userSeats;
-		$scope.remSeats = remSeats;
+		var remSeats1 = oldRemSeats - $scope.booking.userSeats;
+		$scope.remSeats1 = remSeats1;
 
 		var bookingObj = {
-			TSeats: remSeats
+			remSeats: remSeats1
 		}
 
 		console.log($scope.id);
 
 		$http({
-      method: 'UPDATE',
+      method: 'PUT',
       url: 'assign/updateAssign/' + $scope.id,
       headers: {'Content-Type': 'application/json'},
       data: angular.fromJson(bookingObj)
@@ -84,14 +87,17 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
     .then(function(response){
       console.log(response);
       console.log("REM SEATS UPDATED");
-      refresh();
     })
-		
-		alert(bookingObj);
-		//var orderId = Math.floor(Math.random()*90000) + 10000;
-		//$scope.orderId = orderId;
 
+		var orderId = Math.floor(Math.random()*90000) + 10000;
+	  $scope.orderId = orderId;
 
+		$scope.carousel = false;
+		$scope.movieList = false;
+		$scope.headerBox = false;
+		$scope.orderSuccess = false;
+		$scope.bookingWindow = false;
+		$scope.orderSuccess = true;
 
 	}
 
