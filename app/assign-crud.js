@@ -3,6 +3,13 @@ var router = express.Router();
 bodyParser = require('body-parser'); //parses information from POST
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var bookSchema = mongoose.Schema({
+  bookingDetails: [{
+   orderId: String,
+   userSeats: String }]
+});
 
 var assignSchema = mongoose.Schema({
     cityName: String,
@@ -18,10 +25,12 @@ var assignSchema = mongoose.Schema({
     moviActors: String,
     theatreSeats: String,
     ticketPrice: String,
-    remSeats: String
+    remSeats: String,
+    bookingSchema: [bookSchema]
  });
-var Assign = mongoose.model('Assign', assignSchema, 'assigning');
 
+var Assign = mongoose.model('Assign', assignSchema, 'assigning');
+var Book = mongoose.model('Book', bookSchema, 'booking');
 
 router.get('/getAssign', function (req, res) {
     console.log("REACHED SINGLE GET FUNCTION ON SERVER");
@@ -38,6 +47,43 @@ router.get('/getAssign/:id', function (req, res) {
 
     });
 });
+
+router.put('/addBooking/:id/', function(req, res){
+  var booking = new Assign({
+    bookingSchema: [{
+      bookingDetails: [{
+        orderId: req.body.OId,
+        userSeats: req.body.USeats
+      }]
+    }]
+  });
+  console.log(booking);
+  console.log("Inside ASSIGN CRUD, Just threw bookingDetails");
+
+  booking.save({_id: req.params.id}, function(err,docs){
+    if( err ) throw err;
+    console.log("Booking Details assigned successfully");
+    res.json(docs);
+  });
+});
+
+// router.put('/addBooking/:id/', function(req, res){
+//   var booking = new Assign({
+//     bookingSchema: [{
+//       orderId: req.body.OId,
+//       userSeats: req.body.USeats }]
+//   });
+//   console.log(booking);
+//   console.log(req.params.id);
+//   console.log("Inside ASSIGN CRUD, Just thrown bookingDetails");
+//
+//   booking.findOneAndUpdate({ _id: req.params.id},
+//                                  { $addToSet: { bookingSchema: [{ bookSchema:  req.body }] }},
+//                                  {upsert: true},
+//                                  function(err,doc){
+//                                    console.log(doc);
+//                                  });
+// });
 
 router.post('/addAssign', function(req, res){
 
@@ -62,10 +108,8 @@ router.post('/addAssign', function(req, res){
     if ( err ) throw err;
     console.log("Show Assigned Successfully");
     res.json(docs);
+  });
 });
-
-
- });
 
 router.delete('/deleteAssign/:id/', function(req, res){
    console.log("REACHED Delete FUNCTION ON SERVER");

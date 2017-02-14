@@ -99,6 +99,24 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 		$scope.bookingWindow = false;
 		$scope.orderSuccess = true;
 
+		var bookingDetailsObj = {
+			USeats: $scope.booking.userSeats,
+			OId: orderId
+		}
+
+		$scope.bookingDetailsObj = bookingDetailsObj;
+
+		$http({
+			method: 'PUT',
+			url: 'assign/addBooking/' + $scope.id,
+			headers: {'Content-Type': 'application/json'},
+			data: angular.fromJson(bookingDetailsObj)
+		})
+		.then(function(response){
+			console.log(response);
+			console.log("INSIDE MAIN CTRL, Booking Details added successfully");
+		})
+
 	}
 
 });
