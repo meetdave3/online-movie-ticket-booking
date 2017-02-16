@@ -1,4 +1,4 @@
-# MEAN Stack Movie Ticket Booking System v1.8
+# MEAN Stack Movie Ticket Booking System v1.9
 
 This is a repo for a starter application for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application.
 
@@ -19,8 +19,7 @@ This is a repo for a starter application for a Single Page MEAN Stack applicatio
 - v1.6: Added Material Design and CSS Fix on all pages (10th Feb 2017)
 - v1.7: Home Page - Search And filter Movies based on Genre / City and proceed to book tickets (12th Feb 2017)
 - v1.8: Book tickets based on City and generate Ticket ID and update available seats (13th Feb 2017)
+- v1.9: Ticket Cancellation module based on Ticket ID (16th Feb 2017)
 
 ## Upcoming Additions
-- v1.9: Ticket Cancellation module based on Ticket ID
 - v2.0: Security and session
-- Future Versions updating soon

@@ -101,14 +101,16 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 
 		var bookingDetailsObj = {
 			USeats: $scope.booking.userSeats,
-			OId: orderId
+			OId: orderId,
+			AId: $scope.id
 		}
 
 		$scope.bookingDetailsObj = bookingDetailsObj;
+		console.log($scope.bookingDetailsObj);
 
 		$http({
-			method: 'PUT',
-			url: 'assign/addBooking/' + $scope.id,
+			method: 'POST',
+			url: 'book/addBooking',
 			headers: {'Content-Type': 'application/json'},
 			data: angular.fromJson(bookingDetailsObj)
 		})

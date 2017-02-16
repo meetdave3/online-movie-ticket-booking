@@ -1,0 +1,30 @@
+<div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
+    <h1>Movie Bookings</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+          <input ng-model="bookFilter" type="text" placeholder="Search for OrderId" autofocus>
+        	<style type="text/css">
+              input {text-align: center}
+          </style>
+        	<br><br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Number of Seats</th>
+                        <th>Operations</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-model="booking" ng-repeat="booking in bookList | filter: bookFilter">
+                        <td>{{booking.orderId}}</td>
+                        <td>{{booking.userSeats}}</td>
+                        <td><button ng-click="deleteBooking(booking)" class="btn btn-danger waves-effect">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>

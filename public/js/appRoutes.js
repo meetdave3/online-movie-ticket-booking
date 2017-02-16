@@ -10,7 +10,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		.when('/booking', {
 			templateUrl: 'views/booking.html',
-			controller: 'BookingController'
+			controller: 'BookController'
 		})
 		.when('/movies', {
 			templateUrl: 'views/movies.html',
@@ -28,12 +28,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/assign.html',
 			controller: 'AssignController'
 		})
-        .when('/theatre', {
+    .when('/theatre', {
 			templateUrl: 'views/theatre.html',
 			controller: 'theatreController'
 		});
-
-
 
 	$locationProvider.html5Mode(true);
 

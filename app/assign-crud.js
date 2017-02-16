@@ -5,11 +5,11 @@ bodyParser = require('body-parser'); //parses information from POST
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var bookSchema = mongoose.Schema({
-  bookingDetails: [{
-   orderId: String,
-   userSeats: String }]
-});
+// var bookSchema = mongoose.Schema({
+//   bookingDetails: [{
+//    orderId: String,
+//    userSeats: String }]
+// });
 
 var assignSchema = mongoose.Schema({
     cityName: String,
@@ -25,12 +25,10 @@ var assignSchema = mongoose.Schema({
     moviActors: String,
     theatreSeats: String,
     ticketPrice: String,
-    remSeats: String,
-    bookingSchema: [bookSchema]
+    remSeats: String
  });
 
 var Assign = mongoose.model('Assign', assignSchema, 'assigning');
-var Book = mongoose.model('Book', bookSchema, 'booking');
 
 router.get('/getAssign', function (req, res) {
     console.log("REACHED SINGLE GET FUNCTION ON SERVER");
@@ -44,7 +42,6 @@ router.get('/getAssign/:id', function (req, res) {
     console.log("REACHED GET ID FUNCTION ON SERVER");
      Assign.find({_id: req.params.id}, function (err, docs) {
          res.json(docs);
-
     });
 });
 

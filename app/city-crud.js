@@ -29,10 +29,6 @@ router.get('/getCity/:id', function (req, res) {
 
 router.post('/addCity', function(req, res){
 
- //console.log(req.body);
-  //console.log(req.body.citi);
-
-
  console.log("HFTRGHIGFnh");
  var citi = new City({
      cityName : req.body.cities

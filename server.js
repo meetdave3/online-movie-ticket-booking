@@ -11,6 +11,7 @@ var city = require('./app/city-crud');
 var theatre = require('./app/theatre-crud');
 var showtime = require('./app/showtime-crud');
 var assign = require('./app/assign-crud');
+var book = require('./app/bookings-crud');
 
 // configuration ===========================================
 
@@ -23,6 +24,7 @@ app.use('/city',city);
 app.use('/theatre',theatre);
 app.use('/showtime',showtime);
 app.use('/assign',assign);
+app.use('/book',book);
 
 
 var mongo = require('mongodb');
