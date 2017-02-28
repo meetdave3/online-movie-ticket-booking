@@ -1,6 +1,8 @@
-# MEAN Stack Movie Ticket Booking System v1.9
+# MEAN Stack Movie Ticket Booking System v2.0.0
 
 This is a repo for a starter application for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application.
+
+Make sure you have Node.js and MongoDB Installed on your local system. Start MongoDB server and follow below given installation procedure on the Command Line / Terminal
 
 ## Installation
 1. Download the repository
@@ -20,6 +22,7 @@ This is a repo for a starter application for a Single Page MEAN Stack applicatio
 - v1.7: Home Page - Search And filter Movies based on Genre / City and proceed to book tickets (12th Feb 2017)
 - v1.8: Book tickets based on City and generate Ticket ID and update available seats (13th Feb 2017)
 - v1.9: Ticket Cancellation module based on Ticket ID (16th Feb 2017)
+- v2.0: Security (Firebase) and session (28th Feb 2017)
 
 ## Upcoming Additions
-- v2.0: Security and session
+- No Upcoming Additions
