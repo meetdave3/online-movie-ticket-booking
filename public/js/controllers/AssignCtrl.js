@@ -1,14 +1,26 @@
-sampleApp.controller('AssignController', function($scope, $http, $log){
+sampleApp.controller('AssignController', function($scope, $http, $log, $location){
 
 	$scope.tagline = 'Now ya can create shows by assigning movies to show times, Its SHOW TIME!';
 
 	var getMovies = function(){
-		$http.get('/movie/getMovie').success(function(response) {
-				console.log('READ IS SUCCESSFUL');
-				$scope.moviList = response;
-				$scope.movi = "";
-				console.log($scope.moviList);
-		});
+			$http.get('/movie/getMovie').success(function(response) {
+					console.log('READ IS SUCCESSFUL');
+					$scope.moviList = response;
+					$scope.movi = "";
+					console.log($scope.moviList);
+				});
+			}
+
+	$scope.logoutUser = function() {
+		var cookieInfo = document.cookie;
+		console.log(cookieInfo);
+		if(cookieInfo == "") {
+			alert("Already Logged Out");
+		} else {
+			document.cookie = cookieInfo + '; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			//alert("Log Out Successful!");
+			$location.path('/');
+		}
 	}
 
 	var refresh1 = function() {
@@ -22,12 +34,24 @@ sampleApp.controller('AssignController', function($scope, $http, $log){
 	refresh1();
 
 	var refresh = function() {
+		var cookieInfo = document.cookie;
+		if(cookieInfo == "") {
+			alert('Please Login / Sign-up to access this module');
+			$location.path('/');
+		} else {
 			$http.get('/assign/getAssign').success(function(response) {
 					console.log('READ IS SUCCESSFUL');
 					$scope.assignList = response;
 					$scope.assign = "";
 					console.log($scope.assignList);
 			});
+			$scope.adminCity = true;
+			$scope.adminTheatre = true;
+			$scope.adminAssign = true;
+			$scope.adminMovies = true;
+			$scope.adminShowtime = true;
+			$scope.adminBooking = true;
+		}
 	};
 
 	refresh();

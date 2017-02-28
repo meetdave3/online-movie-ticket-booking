@@ -1,1 +1,1 @@
-var sampleApp = angular.module('sampleApp', ['ngRoute', 'appRoutes']);
+var sampleApp = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'firebase']);

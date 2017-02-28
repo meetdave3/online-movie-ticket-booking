@@ -1,4 +1,4 @@
-sampleApp.controller('theatreController', function($scope, $http, $log){
+sampleApp.controller('theatreController', function($scope, $http, $log, $location){
 
     $scope.tagline = 'Manage Your Theatres here';
 
@@ -13,15 +13,39 @@ var loadCities = function() {
 loadCities();
 
 var refresh = function() {
+  var cookieInfo = document.cookie;
+  if(cookieInfo == "") {
+    alert('Please Login / Sign-up to access this module');
+    $location.path('/');
+  } else {
         $http.get('/theatre/getTheatre').success(function(response) {
             console.log('READ IS SUCCESSFUL');
             $scope.theatreList = response;
             console.log($scope.theatreList);
             $scope.theatre = "";
         });
+        $scope.adminCity = true;
+  			$scope.adminTheatre = true;
+  			$scope.adminAssign = true;
+  			$scope.adminMovies = true;
+  			$scope.adminShowtime = true;
+  			$scope.adminBooking = true;
+  		}
     };
 
 refresh();
+
+    $scope.logoutUser = function() {
+      var cookieInfo = document.cookie;
+      console.log(cookieInfo);
+      if(cookieInfo == "") {
+        alert("Already Logged Out");
+      } else {
+        document.cookie = cookieInfo + '; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        //alert("Log Out Successful!");
+        $location.path('/');
+      }
+    }
 
     $scope.addTheatre = function(theatre)
     {

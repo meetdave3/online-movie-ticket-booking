@@ -1,3 +1,8 @@
+<!--div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
+    <h1>LOGIN</h1>
+    <p>{{ tagline }}</p>
+</div-->
+
 <div class="container">
   <div class="row">
     <div class="col-md-11 align-self-center">
@@ -26,42 +31,37 @@
 </div>
 <br>
 
-<div class="container jumbotron text-center wow fadeInUp" data-wow-delay="0.5s">
-    <h1>City</h1>
+<div class="container text-center jumbotron wow fadeInUp" ng-show="signInContainer">
+  <center>
+    <h2>Sign In</h2>
+    {{data}}
+    <hr>
+    <input ng-model="user.email" type="text" placeholder="Enter Email ID" autofocus>
+    <input ng-model="user.password" type="password" placeholder="Password">
+    <style type="text/css">
+        input {text-align: center}
+    </style>
+    <br><br>
+    <button ng-click="signInUser(user)" class="btn btn-mdb waves-effect">Log In</button>
+    <button ng-click="signUpShow()" class="btn btn-mdb waves-effect">Not a User? Sign Up</button>
+    <br><hr>
+    <button ng-click="showCookieInfo()" class="btn btn-primary waves-effect">Show Cookie Info</button>
+    <button ng-click="deleteCookieInfo()" class="btn btn-danger waves-effect">Delete Cookie Info</button>
+  </center>
+</div>
 
-    <p>{{ tagline }}</p>
-
-    <div>
-        <center>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>City List</th>
-                        <th>Operations</th>
-                        <th>
-
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-
-
-                        <td><input ng-model="city.cityName" /></td>
-
-                        <td><button ng-click="addCity(city)" class="btn btn-dark-green waves-effect">Add </button></td>
-
-                        <td><button ng-click="updateCity(city)" class="btn btn-mdb waves-effect">Update</button></td>
-
-                    </tr>
-                    <tr ng-repeat=" city in cityList">
-                        <td>{{city.cityName}}</td>
-
-                        <td><button ng-click="removeCity(city)" class="btn btn-danger waves-effect">Remove</button></td>
-                        <td><button ng-click="editCity(city)" class="btn btn-primary waves-effect">Edit</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </center>
-    </div>
+<div class="container text-center jumbotron wow fadeInUp" ng-show="signUpContainer">
+  <center>
+    <h2>Sign Up</h2>
+    <hr>
+    <input ng-model="user.email" type="text" placeholder="Enter Email ID" autofocus>
+    <input ng-model="user.password" type="password" placeholder="Password">
+    <input ng-model="user.repeatPassword" type="password" placeholder="Repeat Password">
+  	<style type="text/css">
+        input {text-align: center}
+    </style>
+  	<br><br>
+    <button ng-click="signUpUser(user)" class="btn btn-mdb waves-effect">Sign Up</button>
+    <button ng-click="goBack()" class="btn btn-danger waves-effect">Back</button>
+  </center>
+</div>

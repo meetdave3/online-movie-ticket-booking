@@ -2,12 +2,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 	$routeProvider
 
-		// home page
 		.when('/', {
+			templateUrl: 'views/login.html',
+			controller: 'LoginController'
+		})
+		.when('/home', {
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
-
 		.when('/booking', {
 			templateUrl: 'views/booking.html',
 			controller: 'BookController'

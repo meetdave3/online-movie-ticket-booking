@@ -1,8 +1,14 @@
-sampleApp.controller('MainController', function($scope, $http, $log) {
+sampleApp.controller('MainController', function($scope, $http, $log, $location) {
 
 	$scope.tagline = 'NOW SHOWING';
+	$scope.mainCtrl = null;
 
 	var refresh = function() {
+		var cookieInfo = document.cookie;
+		if(cookieInfo == "") {
+			alert('Please Login / Sign-up to access this module');
+			$location.path('/');
+		} else {
 			$http.get('/assign/getAssign').success(function(response) {
 					console.log('READ IS SUCCESSFUL');
 					$scope.movieList = true;
@@ -14,6 +20,13 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 					$scope.assign = "";
 					console.log($scope.assignList);
 			});
+			$scope.adminCity = true;
+			$scope.adminTheatre = true;
+			$scope.adminAssign = true;
+			$scope.adminMovies = true;
+			$scope.adminShowtime = true;
+			$scope.adminBooking = true;
+		}
 	};
 
 	refresh();
@@ -64,6 +77,18 @@ sampleApp.controller('MainController', function($scope, $http, $log) {
 
 		$scope.totalAmount = totalAmount;
 		console.log(totalAmount);
+	}
+
+	$scope.logoutUser = function() {
+		var cookieInfo = document.cookie;
+		console.log(cookieInfo);
+		if(cookieInfo == "") {
+			alert("Already Logged Out");
+		} else {
+			document.cookie = cookieInfo + '; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			//alert("Log Out Successful!");
+			$location.path('/');
+		}
 	}
 
 	$scope.bookNow = function(booking) {

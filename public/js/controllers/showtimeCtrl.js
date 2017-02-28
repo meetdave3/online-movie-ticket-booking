@@ -1,14 +1,26 @@
-sampleApp.controller('showtimeController', function($scope, $http, $log){
+sampleApp.controller('showtimeController', function($scope, $http, $log, $location){
 
   $scope.tagline = "You can add show timings to all theatres on this page";
 
   var loadTheatres = function() {
-    $http.get('/theatre/getTheatre').success(function(response){
-      console.log('Inside Load Threatres');
-      $scope.theatreList = response;
-      console.log($scope.theatreList);
-      $scope.threatre = "";
-    });
+    var cookieInfo = document.cookie;
+		if(cookieInfo == "") {
+			alert('Please Login / Sign-up to access this module');
+			$location.path('/');
+		} else {
+      $http.get('/theatre/getTheatre').success(function(response){
+        console.log('Inside Load Threatres');
+        $scope.theatreList = response;
+        console.log($scope.theatreList);
+        $scope.threatre = "";
+      });
+      $scope.adminCity = true;
+      $scope.adminTheatre = true;
+      $scope.adminAssign = true;
+      $scope.adminMovies = true;
+      $scope.adminShowtime = true;
+      $scope.adminBooking = true;
+    }
   };
 
   loadTheatres();
@@ -22,6 +34,18 @@ sampleApp.controller('showtimeController', function($scope, $http, $log){
       $scope.showtime = "";
     });
   };
+
+  $scope.logoutUser = function() {
+    var cookieInfo = document.cookie;
+    console.log(cookieInfo);
+    if(cookieInfo == "") {
+      alert("Already Logged Out");
+    } else {
+      document.cookie = cookieInfo + '; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      //alert("Log Out Successful!");
+      $location.path('/');
+    }
+  }
 
   refresh();
 
